@@ -1,0 +1,62 @@
+Jake London
+0961071
+CIS 4650 - Checkpoint Three
+
+Incomplete/Unsupported:
+- Control Structures
+- Arrays
+
+
+Code based on given SampleParser for tiny programming language
+
+Notes below containing information about compilation and execution taken from SampleParser readme and adjusted for C-.
+
+------
+
+A JFlex+Cup implementation for the CM language.
+
+Note that you need to modify the paths for CLASSPATH, JFLEX, and CUP in 
+the Makefile so that the related commands can be found on your particular 
+machine.  For example, the given settings are for the Linux server and the 
+commented settings are for my macbook.
+
+To build the parser, type "make" in the current directory, which will 
+generate an executable program called "CM".
+
+**Note**
+
+To error check and compile, -c flag must be specified before filename
+To see symbol table and semantic errors, -s flag must be specified before the filename
+To see abstract syntax tree and syntax errors, -a flag or no flag must be specified before the filename
+
+For example:
+
+  -----------------
+  "java -cp /usr/share/java/cup.jar:. CM -c fac.cm"       - Compiles if no errors                   (Checkpoint 3)
+
+  Will write to new file with same name but .tm instead of .cm ("1.cm" input writes new file: "1.tm")
+
+  To run with TMsimulator:
+    - "make" simulator
+    - ensure "tm" executable is in same directory as .tm file
+    - ./tm file.tm to run
+  -----------------
+
+
+
+  "java -cp /usr/share/java/cup.jar:. CM -s fac.cm"       - Displays symbol table & semantic errors (Checkpoint 2)
+  
+
+  "java -cp /usr/share/java/cup.jar:. CM -a fac.cm"       - Displays syntax tree & syntax errors    (Checkpoint 1)
+  OR
+  "java -cp /usr/share/java/cup.jar:. CM fac.cm"          - Displays syntax tree & syntax errors    (Checkpoint 1)
+
+
+  if you wish to redirect stderr and stdout to files, try:
+
+  "java -cp /usr/share/java/cup.jar:. CM -s fac.cm > out.sym 2>error.txt"
+
+  where the symbol table will write to out.sym and the errors will write to error.txt
+
+
+To rebuild the parser, type "make clean" and type "make" again.
